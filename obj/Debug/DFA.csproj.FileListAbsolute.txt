@@ -1,0 +1,9 @@
+c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\bin\Debug\DFA.exe.config
+c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\obj\Debug\DFA.csprojResolveAssemblyReference.cache
+c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\obj\Debug\DFA.Form1.resources
+c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\obj\Debug\DFA.Properties.Resources.resources
+c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\obj\Debug\DFA.csproj.GenerateResource.Cache
+c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\bin\Debug\DFA.exe
+c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\bin\Debug\DFA.pdb
+c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\obj\Debug\DFA.exe
+c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\obj\Debug\DFA.pdb
