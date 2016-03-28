@@ -7,3 +7,12 @@ c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\bin\Debug\D
 c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\bin\Debug\DFA.pdb
 c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\obj\Debug\DFA.exe
 c:\users\administrator\documents\visual studio 2013\Projects\DFA\DFA\obj\Debug\DFA.pdb
+F:\MyGitHub\DFA\DFA\bin\Debug\DFA.exe.config
+F:\MyGitHub\DFA\DFA\obj\Debug\DFA.exe
+F:\MyGitHub\DFA\DFA\obj\Debug\DFA.pdb
+F:\MyGitHub\DFA\DFA\bin\Debug\DFA.exe
+F:\MyGitHub\DFA\DFA\bin\Debug\DFA.pdb
+F:\MyGitHub\DFA\DFA\obj\Debug\DFA.csprojResolveAssemblyReference.cache
+F:\MyGitHub\DFA\DFA\obj\Debug\DFA.Form1.resources
+F:\MyGitHub\DFA\DFA\obj\Debug\DFA.Properties.Resources.resources
+F:\MyGitHub\DFA\DFA\obj\Debug\DFA.csproj.GenerateResource.Cache
