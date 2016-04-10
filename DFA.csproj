@@ -52,10 +52,19 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Format.cs" />
+    <Compile Include="NFA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NFA.Designer.cs">
+      <DependentUpon>NFA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NFA.resx">
+      <DependentUpon>NFA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

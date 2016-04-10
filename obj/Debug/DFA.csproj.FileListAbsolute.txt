@@ -16,3 +16,4 @@ F:\MyGitHub\DFA\DFA\obj\Debug\DFA.csprojResolveAssemblyReference.cache
 F:\MyGitHub\DFA\DFA\obj\Debug\DFA.Form1.resources
 F:\MyGitHub\DFA\DFA\obj\Debug\DFA.Properties.Resources.resources
 F:\MyGitHub\DFA\DFA\obj\Debug\DFA.csproj.GenerateResource.Cache
+F:\MyGitHub\DFA\DFA\obj\Debug\DFA.NFAResult.resources
