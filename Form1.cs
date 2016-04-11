@@ -206,6 +206,14 @@ namespace DFA
         {
             string Exp = this.textBox1.Text;
             string Back=ExpToNFA.ExpToBack(Exp);
+            for(int i=0;i<Back.Length;i++)
+            {
+                char temp = Back[i];
+                if ((int)temp >= 97 && (int)temp <= 122)
+                {
+
+                }
+            }
         }
     }
 }
