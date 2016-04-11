@@ -19,6 +19,8 @@ namespace DFA
             InitializeComponent();
         }
 
+        public ExpToNFA ExpToNFA = new ExpToNFA();
+
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -193,6 +195,17 @@ namespace DFA
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string Exp = this.textBox1.Text;
+            string Back=ExpToNFA.ExpToBack(Exp);
         }
     }
 }
