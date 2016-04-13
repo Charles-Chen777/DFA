@@ -51,34 +51,36 @@ namespace DFA
     public class Sigle
     {
 
-        public Sigle(string edge, ref int startIndex, ref List<ThompsonNode> ThompsonNodeList,int Type)
+        public Sigle(string edge, ref int startIndex, ref List<ThompsonNode> ThompsonNodeList)
         {
-            if(Type==1)
-            {
-                NFANode a = new NFANode(startIndex, false);
-                startIndex++;
-                NFANode b = new NFANode(startIndex, false);
-                startIndex++;
-                ThompsonNode aa = new ThompsonNode(a, edge, b);
-                ThompsonNodeList.Add(aa);
-            }
-            else
-            {
+            NFANode a = new NFANode(startIndex, false);
+            startIndex++;
+            NFANode b = new NFANode(startIndex, false);
+            startIndex++;
+            ThompsonNode aa = new ThompsonNode(a, edge, b);
+            ThompsonNodeList.Add(aa);
+        }
 
-            }
-
+        public Sigle(string edge, int Index, int endIndex1, int endIndex2, ref List<ThompsonNode> ThompsonNodeList)
+        {
+            NFANode a = new NFANode(Index, false);
+            NFANode b = new NFANode(endIndex1, false);
+            NFANode c = new NFANode(endIndex2, false);
+            ThompsonNode r1 = new ThompsonNode(a, edge, b);
+            ThompsonNode r2 = new ThompsonNode(a, edge, c);
+            ThompsonNodeList.Add(r1);
+            ThompsonNodeList.Add(r2);
         }
 
     }
 
     public class Or
     {
-        public Or(int startIndex)
+        public Or(ref int startIndex, ref List<ThompsonNode> ThompsonNodeList)
         {
-            t1 = new ThompsonNode_Digit(startIndex, "ε", startIndex + 1);
-            t2 = new ThompsonNode_Digit(startIndex, "ε", startIndex + 3);
-            t3 = new ThompsonNode_Digit(startIndex + 2, "ε", startIndex + 5);
-            t4 = new ThompsonNode_Digit(startIndex + 4, "ε", startIndex + 5);
+            Sigle s1 = new Sigle("ε", startIndex, startIndex + 1, startIndex + 3, ref ThompsonNodeList);
+            startIndex += 5;
+            Sigle s2 = new Sigle("ε", startIndex, startIndex - 3, startIndex - 3, ref ThompsonNodeList);
         }
     }
 

@@ -17,3 +17,6 @@ F:\MyGitHub\DFA\DFA\obj\Debug\DFA.Form1.resources
 F:\MyGitHub\DFA\DFA\obj\Debug\DFA.Properties.Resources.resources
 F:\MyGitHub\DFA\DFA\obj\Debug\DFA.csproj.GenerateResource.Cache
 F:\MyGitHub\DFA\DFA\obj\Debug\DFA.NFAResult.resources
+L:\Github\DFA\bin\Debug\DFA.exe.config
+L:\Github\DFA\obj\Debug\DFA.exe
+L:\Github\DFA\obj\Debug\DFA.pdb
