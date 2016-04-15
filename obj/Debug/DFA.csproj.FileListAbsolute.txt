@@ -20,3 +20,10 @@ F:\MyGitHub\DFA\DFA\obj\Debug\DFA.NFAResult.resources
 L:\Github\DFA\bin\Debug\DFA.exe.config
 L:\Github\DFA\obj\Debug\DFA.exe
 L:\Github\DFA\obj\Debug\DFA.pdb
+L:\Github\DFA\bin\Debug\DFA.exe
+L:\Github\DFA\bin\Debug\DFA.pdb
+L:\Github\DFA\obj\Debug\DFA.csprojResolveAssemblyReference.cache
+L:\Github\DFA\obj\Debug\DFA.Form1.resources
+L:\Github\DFA\obj\Debug\DFA.NFAResult.resources
+L:\Github\DFA\obj\Debug\DFA.Properties.Resources.resources
+L:\Github\DFA\obj\Debug\DFA.csproj.GenerateResource.Cache
