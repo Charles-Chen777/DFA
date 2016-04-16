@@ -245,5 +245,19 @@ namespace DFA
         }
     }
 
+    public class Route
+    {
+        public string r_from;
+        public string r_via;
+        public string r_to;
+
+        public Route(string r_from,string r_via,string r_to)
+        {
+            this.r_from = r_from;
+            this.r_via = r_via;
+            this.r_to = r_to;
+        }
+    }
+
 
 }
