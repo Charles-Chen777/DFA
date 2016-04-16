@@ -6,15 +6,21 @@ using System.Threading.Tasks;
 
 namespace DFA
 {
+
+    //正规式转化为后缀表达式
     public class ExpToNFA
     {
-        //正规式转化为后缀表达式
+        
         public string ExpToBack(string Exp)
         {
-            return "ab|*+a+b+b";
+            InToPost itp = new InToPost(Exp);
+            string output = itp.doTrans();  
+            //return "ab|*+a+b+b";
+            return output;
         }
     }
 
+    //NFA节点类
     public class NFANode
     {
         public int NodeID;
@@ -28,6 +34,7 @@ namespace DFA
         }
     }
 
+    //汤姆森节点类
     public class ThompsonNode
     {
         public NFANode head;
@@ -102,6 +109,7 @@ namespace DFA
 
     }
 
+    //或连接类
     public class Or
     {
 
@@ -165,6 +173,7 @@ namespace DFA
         }
     }
 
+    //闭包连接类
     public class Star
     {
         public NFANode Star_Head;
@@ -184,7 +193,7 @@ namespace DFA
             NFANode c = new NFANode(startIndext, true);
             startIndext++;
             NFANode d = new NFANode(startIndext, false);
-            Star_Head = new NFANode(startIndext, false);//Star节点的尾节点
+            Star_Tail = new NFANode(startIndext, false);//Star节点的尾节点
             ThompsonNode t1 = new ThompsonNode(a, "ε", b);
             ThompsonNode t2 = new ThompsonNode(c, "ε", b);
             ThompsonNode t3 = new ThompsonNode(c, "ε", d);
@@ -233,18 +242,35 @@ namespace DFA
         }
     }
 
+    //闭包类
     public class BiBao
     {
         public string BiBaoName;
         public string BiBaoJi;
+
+        public BiBao()
+        {
+        }
 
         public BiBao(string BiBaoName, string BiBaoJi)
         {
             this.BiBaoName = BiBaoName;
             this.BiBaoJi = BiBaoJi;
         }
+
+        public List<int> GetBiBaoIntList(string BiBaoJi)
+        {
+            List<int> temp = new List<int>();
+            string[] temp_bibaoji=BiBaoJi.Split(',');
+            for(int i=0;i<temp_bibaoji.Length-1;i++)
+            {
+                temp.Add(Convert.ToInt32(temp_bibaoji[i]));
+            }
+            return temp;
+        }
     }
 
+    //路径类
     public class Route
     {
         public string r_from;
@@ -258,6 +284,191 @@ namespace DFA
             this.r_to = r_to;
         }
     }
+
+
+    //自定义栈
+
+    public class MyStack
+    {
+        private int maxSize;//栈的最大容量
+        private char[] ch;	//栈的数据
+        private int top;	//栈头标记
+
+        public MyStack(int s)
+        {
+            maxSize = s;
+            ch = new char[s];
+            top = -1;
+        }
+
+        //入栈
+        public void push(char c)
+        {
+            ch[++top] = c;
+        }
+
+        //出栈
+        public char pop()
+        {
+            return ch[top--];
+        }
+
+        public char peek()
+        {
+            return ch[top];
+        }
+
+        public bool isEmpty()
+        {
+            return top == -1;
+        }
+
+        public bool isFull()
+        {
+            return top == (maxSize - 1);
+        }
+
+        public int size()
+        {
+            return top + 1;
+        }
+
+        public char get(int index)
+        {
+            return ch[index];
+        }
+
+        //public void display(String str) {
+        //    System.out.print(str);
+        //    System.out.print(" Stack (bottom-->top): ");
+        //    for (int i = 0; i < size(); i++) {
+        //        System.out.print(get(i)+" ");
+        //    }
+        //    System.out.println();
+        //}
+    }
+
+
+    public class InToPost
+    {
+        private MyStack ms;//自定义栈
+        private String input;//输入中缀表达式
+        private String output = "";//输出的后缀表达式
+
+        public InToPost(String input)
+        {
+            this.input = input;
+            int size = input.Length;
+            ms = new MyStack(size);
+        }
+
+        public String doTrans()
+        {
+            //转换为后缀表达式方法
+            for (int i = 0; i < input.Length; i++)
+            {
+                char ch = input[i];
+                //ms.display("for " + ch + " ");
+                switch (ch)
+                {
+                    case '|':
+                    //case '-':
+                        getOper(ch, 1);
+                        break;
+                    case '+':
+                        getOper(ch, 2);
+                        break;
+                    case '*':
+                        getOper(ch, 3);
+                        break;
+                    case '(':
+                        ms.push(ch);
+                        break;
+                    case ')':
+                        getParent(ch);
+                        break;
+                    default:
+                        output = output + ch;
+                        break;
+                }//end switch 
+            }//end for
+            while (!ms.isEmpty())
+            {
+                //ms.display("While ");
+                output = output + ms.pop();
+            }
+            //ms.display("end while!!");
+            return output;
+        }
+
+        /**
+         * @param ch
+         * 获得上一级字符串
+         */
+        public void getParent(char ch)
+        {
+            while (!ms.isEmpty())
+            {
+                char chx = ms.pop();
+                if (chx == '(')
+                {
+                    break;
+                }
+                else
+                {
+                    output = output + chx;
+                }
+            }
+        }
+
+        /**
+         * @param ch 操作符
+         * @param prec1 操作符的优先级
+         * 根据操作符的优先级判断是否入栈，及入栈的顺序
+         */
+        public void getOper(char ch, int prec1)
+        {
+            while (!ms.isEmpty())
+            {//判断栈是否为空
+                char operTop = ms.pop();
+                if (operTop == '(')
+                {
+                    ms.push(operTop);
+                    break;
+                }
+                else
+                {
+                    int prec2;
+                    if (operTop == '|')
+                    {
+                        prec2 = 1;
+                    }
+                    else if (operTop=='+')
+                    {
+                        prec2 = 2;
+                    }
+                    else
+                    {
+                        prec2 = 3;
+                    }
+                    if (prec2 < prec1)
+                    {
+                        ms.push(operTop);
+                        break;
+                    }
+                    else
+                    {
+                        output = output + operTop;
+                    }
+                }
+            }// end while
+            ms.push(ch);
+        }
+    }
+
+
+
+
 
 
 }
