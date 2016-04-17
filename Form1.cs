@@ -392,7 +392,9 @@ namespace DFA
 
         private void button6_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            Application.Exit();
+            Application.Restart();
+            //System.Diagnostics.Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
         }
 
         private void Form1_Load(object sender, EventArgs e)
