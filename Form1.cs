@@ -146,6 +146,8 @@ namespace DFA
         //转换为NFA
         private void button4_Click(object sender, EventArgs e)
         {
+            this.textBox1.Enabled = false;
+            this.textBox3.Enabled = false;
             string Exp = this.textBox1.Text;
             //转换为后缀表达式
             string Back=ExpToNFA.ExpToBack(Exp);
@@ -212,18 +214,15 @@ namespace DFA
                 List<int> tempListfora = BiBaoMethod.GetBiBaoIntList(BiBaoList[i].BiBaoJi);
                 string bibaojifora = string.Empty;
                 string bibaojiforb = string.Empty;
-                //var q_a = (from f in ThompsonNodeList where tempListfora.Contains(f.head.NodeID) && f.edge == "a" select f.tail.NodeID).ToList();
+                //字符a
                 var q_aa = (from f in ThompsonNodeList where f.edge == "a" select new { headNodeID = f.head.NodeID, tailNodeID = f.tail.NodeID }).ToList();
                 var q_a = (from f in q_aa where tempListfora.Contains(f.headNodeID) select f.tailNodeID).ToList();
                 if (q_a.Count != 0)
-                {        
+                {
                     for (int j = 0; j < q_a.Count; j++)
                     {
-                        //if (!tempListfora.Contains(q_a[j]))
-                        //{
-                            ziji.Add(q_a[j]);
-                            bibaojifora += q_a[j].ToString()+",";
-                        //}                 
+                        ziji.Add(q_a[j]);
+                        bibaojifora += q_a[j].ToString() + ",";
                     }
                 }
 
@@ -241,18 +240,15 @@ namespace DFA
                     RouteList.Add(aaa);
                 }  
 
-                //var q_b = (from f in ThompsonNodeList where tempListfora.Contains(f.head.NodeID) && f.edge == "b" select f.tail.NodeID).ToList();
+                //字符b
                 var q_bb = (from f in ThompsonNodeList where f.edge == "b" select new{headNodeID=f.head.NodeID,tailNodeID=f.tail.NodeID}).ToList();
                 var q_b = (from f in q_bb where tempListfora.Contains(f.headNodeID) select f.tailNodeID).ToList();
                 if (q_b.Count != 0)
                 {
                     for (int j = 0; j < q_b.Count; j++)
                     {
-                        //if (!tempListfora.Contains(q_b[j]))
-                        //{
-                            ziji.Add(q_b[j]);
-                            bibaojiforb += q_b[j].ToString() + ",";
-                        //}
+                        ziji.Add(q_b[j]);
+                        bibaojiforb += q_b[j].ToString() + ",";
                     }
                 }
                 if (ziji.Count > 0)
@@ -346,7 +342,7 @@ namespace DFA
                 for (int k = 0; k < BiBaoList.Count; k++)
                 {
                     List<int> B = BiBaoMethod.GetBiBaoIntList(BiBaoList[k].BiBaoJi);
-                    //使用差集标胶两个闭包集合是否相等
+                    //使用差集比较两个闭包集合是否相等
                     if (A.Except(B).Count() == 0)
                     {
                         newroutename=BiBaoList[k].BiBaoName;
@@ -391,6 +387,16 @@ namespace DFA
             {
                 MessageBox.Show("不符合规范");
             }
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
         }
     }
